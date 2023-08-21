@@ -15,10 +15,11 @@
   //#define MARAUDER_V6
   //#define MARAUDER_KIT
   //#define GENERIC_ESP32
-  #define MARAUDER_FLIPPER
+  //#define MARAUDER_FLIPPER
   //#define ESP32_LDDB
   //#define MARAUDER_DEV_BOARD_PRO
   //#define XIAO_ESP32_S3
+  #define JCZN
   //// END BOARD TARGETS
 
   #define MARAUDER_VERSION "v0.11.0-RC3"
@@ -150,6 +151,19 @@
     //#define HAS_PWR_MGMT
     //#define HAS_SCREEN
     //#define HAS_SD
+    //#define HAS_TEMP_SENSOR
+  #endif
+
+  #ifdef JCZN
+    //#define FLIPPER_ZERO_HAT
+    //#define HAS_BATTERY
+    #define HAS_BT
+    //#define HAS_BUTTONS
+    //#define HAS_NEOPIXEL_LED
+    //#define HAS_PWR_MGMT
+    #define HAS_SCREEN
+    #define HAS_SD
+    #define USE_SD
     //#define HAS_TEMP_SENSOR
   #endif
   //// END BOARD FEATURES
@@ -500,6 +514,10 @@
       #define STATUSBAR_COLOR 0x4A49
     #endif
 
+    #ifdef JCZN
+      // TODO TGE
+    #endif
+
   #endif
   //// END DISPLAY DEFINITIONS
 
@@ -596,6 +614,10 @@
     #define ICON_H 22
     #define BUTTON_PADDING 10
   #endif
+
+  #ifdef JCZN
+    // TODO TGE
+  #endif
   //// END MENU DEFINITIONS
 
   //// SD DEFINITIONS
@@ -641,6 +663,12 @@
 
     #ifdef XIAO_ESP32_S3
       #define SD_CS 3
+    #endif
+
+    #ifdef JCZN
+      #define SD_CS 5 // IO5
+      // TODO TGE other pins (MOSI IO23, MISO IO19, CLK IO18)
+      //   Marauder TFT & SD share same SPI interface, not JCZN
     #endif
 
   #endif

@@ -21,7 +21,8 @@
 
 //#include <User_Setup.h>           // Default setup is root library folder
 
-#include <User_Setup_og_marauder.h>
+#include <User_Setup_JCZN-ESP32-2432S028R.h>
+//#include <User_Setup_og_marauder.h>
 //#include <User_Setup_marauder_mini.h>
 //#include <User_Setup_marauder_m5stickc.h>
 
