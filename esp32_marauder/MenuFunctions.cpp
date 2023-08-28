@@ -1161,6 +1161,7 @@ void MenuFunctions::battery2(bool initial)
 #else
 void MenuFunctions::battery(bool initial)
 {
+  #if defined(HAS_BATTERY)
   uint16_t the_color;
   if (battery_obj.i2c_supported)
   {
@@ -1184,6 +1185,7 @@ void MenuFunctions::battery(bool initial)
       display_obj.tft.drawString((String)battery_obj.battery_level + "%", 204, 0, 2);
     }
   }
+  #endif
 }
 void MenuFunctions::battery2(bool initial)
 {
@@ -1964,7 +1966,9 @@ void MenuFunctions::RunSetup()
   addNodes(&confirmMenu, text14, TFT_ORANGE, NULL, UPDATE, [this]() {
     wifi_scan_obj.currentScanMode = OTA_UPDATE;
     changeMenu(&failedUpdateMenu);
-    sd_obj.runUpdate();
+    #if defined(HAS_SD)
+      sd_obj.runUpdate();
+    #endif
   });
 
   // Web Update

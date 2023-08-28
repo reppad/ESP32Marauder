@@ -3483,8 +3483,9 @@ void WiFiScan::addPacket(wifi_promiscuous_pkt_t *snifferPacket, int len) {
         //delay(50);
       }
   
-      sd_obj.main();
-  
+      #if defined(HAS_SD)
+        sd_obj.main();
+      #endif
     }
   
     display_obj.tft.fillRect(127, 0, 193, 28, TFT_BLACK); //erase XY buttons and any lines behind them
@@ -3708,8 +3709,9 @@ void WiFiScan::addPacket(wifi_promiscuous_pkt_t *snifferPacket, int len) {
         //delay(50);
       }
   
-      sd_obj.main();
-     
+      #if defined(HAS_SD)
+        sd_obj.main();
+      #endif
     }
     
     display_obj.tft.fillRect(127, 0, 193, 28, TFT_BLACK); //erase XY buttons and any lines behind them
